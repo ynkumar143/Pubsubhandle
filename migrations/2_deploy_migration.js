@@ -1,4 +1,4 @@
-var myContract = artifacts.require("./PubsubContract.sol");
+var myContract = artifacts.require("./PubContracts.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(myContract);
