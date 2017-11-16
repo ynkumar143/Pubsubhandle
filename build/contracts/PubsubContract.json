@@ -1,0 +1,759 @@
+{
+  "contractName": "PubsubContract",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "subscriptions",
+      "outputs": [
+        {
+          "name": "UserName",
+          "type": "bytes32"
+        },
+        {
+          "name": "Topic",
+          "type": "bytes32"
+        },
+        {
+          "name": "MailId",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_UserName",
+          "type": "bytes32"
+        },
+        {
+          "name": "_Topic",
+          "type": "bytes32"
+        },
+        {
+          "name": "_MailId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "addSubscription",
+      "outputs": [
+        {
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6102af8061001e6000396000f30060606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632d5bbf60146100515780633dfaa86c146100ae575b600080fd5b341561005c57600080fd5b6100726004808035906020019091905050610107565b60405180846000191660001916815260200183600019166000191681526020018260001916600019168152602001935050505060405180910390f35b34156100b957600080fd5b6100ed6004808035600019169060200190919080356000191690602001909190803560001916906020019091905050610140565b604051808215151515815260200191505060405180910390f35b60008181548110151561011657fe5b90600052602060002090600302016000915090508060000154908060010154908060020154905083565b600061014a6101ef565b8481600001906000191690816000191681525050838160200190600019169081600019168152505082816040019060001916908160001916815250506000805480600101828161019a919061021a565b9160005260206000209060030201600083909190915060008201518160000190600019169055602082015181600101906000191690556040820151816002019060001916905550505060019150509392505050565b6060604051908101604052806000801916815260200160008019168152602001600080191681525090565b81548183558181151161024757600302816003028360005260206000209182019101610246919061024c565b5b505050565b61028091905b8082111561027c576000808201600090556001820160009055600282016000905550600301610252565b5090565b905600a165627a7a7230582059923fc583c506251385bafd6004b06b0ef82b092dfda814d06568b07ef65dc20029",
+  "deployedBytecode": "0x60606040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632d5bbf60146100515780633dfaa86c146100ae575b600080fd5b341561005c57600080fd5b6100726004808035906020019091905050610107565b60405180846000191660001916815260200183600019166000191681526020018260001916600019168152602001935050505060405180910390f35b34156100b957600080fd5b6100ed6004808035600019169060200190919080356000191690602001909190803560001916906020019091905050610140565b604051808215151515815260200191505060405180910390f35b60008181548110151561011657fe5b90600052602060002090600302016000915090508060000154908060010154908060020154905083565b600061014a6101ef565b8481600001906000191690816000191681525050838160200190600019169081600019168152505082816040019060001916908160001916815250506000805480600101828161019a919061021a565b9160005260206000209060030201600083909190915060008201518160000190600019169055602082015181600101906000191690556040820151816002019060001916905550505060019150509392505050565b6060604051908101604052806000801916815260200160008019168152602001600080191681525090565b81548183558181151161024757600302816003028360005260206000209182019101610246919061024c565b5b505050565b61028091905b8082111561027c576000808201600090556001820160009055600282016000905550600301610252565b5090565b905600a165627a7a7230582059923fc583c506251385bafd6004b06b0ef82b092dfda814d06568b07ef65dc20029",
+  "sourceMap": "26:525:1:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:525:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;57:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;204:345;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;57:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;204:345::-;290:12;313:35;;:::i;:::-;385:9;358:15;:24;;:36;;;;;;;;;;;;;428:6;404:15;:21;;:30;;;;;;;;;;;;;469:7;444:15;:22;;:32;;;;;;;;;;;;;486:13;:35;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;505:15;486:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;538:4;531:11;;204:345;;;;;;:::o;26:525::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.0;\n\n\ncontract PubsubContract {\n\n    Subscription[] public subscriptions;\n\n    struct Subscription{\n        bytes32 UserName;\n        bytes32 Topic;\n        bytes32 MailId;\n    }\n\n    function addSubscription(bytes32 _UserName, bytes32 _Topic, bytes32 _MailId) returns (bool success){\n        Subscription memory newSubscription;\n        newSubscription.UserName = _UserName;\n        newSubscription.Topic = _Topic;\n        newSubscription.MailId = _MailId;\n        subscriptions.push(newSubscription);\n        return true;\n    }\n}\n",
+  "sourcePath": "/home/nagendra/solidity/SampleProject/contracts/PubsubContract.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/home/nagendra/solidity/SampleProject/contracts/PubsubContract.sol",
+      "exportedSymbols": {
+        "PubsubContract": [
+          110
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".0"
+          ]
+        },
+        "id": 58,
+        "name": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            110
+          ],
+          "name": "PubsubContract",
+          "scope": 111
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "subscriptions",
+              "scope": 110,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "struct PubsubContract.Subscription storage ref[] storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "struct PubsubContract.Subscription storage ref[] storage pointer"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "Subscription",
+                      "referencedDeclaration": 68,
+                      "type": "struct PubsubContract.Subscription storage pointer"
+                    },
+                    "id": 59,
+                    "name": "UserDefinedTypeName",
+                    "src": "57:12:1"
+                  }
+                ],
+                "id": 60,
+                "name": "ArrayTypeName",
+                "src": "57:14:1"
+              }
+            ],
+            "id": 61,
+            "name": "VariableDeclaration",
+            "src": "57:35:1"
+          },
+          {
+            "attributes": {
+              "canonicalName": "PubsubContract.Subscription",
+              "name": "Subscription",
+              "scope": 110,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "UserName",
+                  "scope": 68,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bytes32",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bytes32",
+                      "type": "bytes32"
+                    },
+                    "id": 62,
+                    "name": "ElementaryTypeName",
+                    "src": "128:7:1"
+                  }
+                ],
+                "id": 63,
+                "name": "VariableDeclaration",
+                "src": "128:16:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "Topic",
+                  "scope": 68,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bytes32",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bytes32",
+                      "type": "bytes32"
+                    },
+                    "id": 64,
+                    "name": "ElementaryTypeName",
+                    "src": "154:7:1"
+                  }
+                ],
+                "id": 65,
+                "name": "VariableDeclaration",
+                "src": "154:13:1"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "MailId",
+                  "scope": 68,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bytes32",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bytes32",
+                      "type": "bytes32"
+                    },
+                    "id": 66,
+                    "name": "ElementaryTypeName",
+                    "src": "177:7:1"
+                  }
+                ],
+                "id": 67,
+                "name": "VariableDeclaration",
+                "src": "177:14:1"
+              }
+            ],
+            "id": 68,
+            "name": "StructDefinition",
+            "src": "99:99:1"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "addSubscription",
+              "payable": false,
+              "scope": 110,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_UserName",
+                      "scope": 109,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 69,
+                        "name": "ElementaryTypeName",
+                        "src": "229:7:1"
+                      }
+                    ],
+                    "id": 70,
+                    "name": "VariableDeclaration",
+                    "src": "229:17:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_Topic",
+                      "scope": 109,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 71,
+                        "name": "ElementaryTypeName",
+                        "src": "248:7:1"
+                      }
+                    ],
+                    "id": 72,
+                    "name": "VariableDeclaration",
+                    "src": "248:14:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_MailId",
+                      "scope": 109,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 73,
+                        "name": "ElementaryTypeName",
+                        "src": "264:7:1"
+                      }
+                    ],
+                    "id": 74,
+                    "name": "VariableDeclaration",
+                    "src": "264:15:1"
+                  }
+                ],
+                "id": 75,
+                "name": "ParameterList",
+                "src": "228:52:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "success",
+                      "scope": 109,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 76,
+                        "name": "ElementaryTypeName",
+                        "src": "290:4:1"
+                      }
+                    ],
+                    "id": 77,
+                    "name": "VariableDeclaration",
+                    "src": "290:12:1"
+                  }
+                ],
+                "id": 78,
+                "name": "ParameterList",
+                "src": "289:14:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        null
+                      ],
+                      "initialValue": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "newSubscription",
+                          "scope": 109,
+                          "stateVariable": false,
+                          "storageLocation": "memory",
+                          "type": "struct PubsubContract.Subscription memory",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "contractScope": null,
+                              "name": "Subscription",
+                              "referencedDeclaration": 68,
+                              "type": "struct PubsubContract.Subscription storage pointer"
+                            },
+                            "id": 79,
+                            "name": "UserDefinedTypeName",
+                            "src": "313:12:1"
+                          }
+                        ],
+                        "id": 80,
+                        "name": "VariableDeclaration",
+                        "src": "313:35:1"
+                      }
+                    ],
+                    "id": 81,
+                    "name": "VariableDeclarationStatement",
+                    "src": "313:35:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "UserName",
+                              "referencedDeclaration": 63,
+                              "type": "bytes32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 80,
+                                  "type": "struct PubsubContract.Subscription memory",
+                                  "value": "newSubscription"
+                                },
+                                "id": 82,
+                                "name": "Identifier",
+                                "src": "358:15:1"
+                              }
+                            ],
+                            "id": 84,
+                            "name": "MemberAccess",
+                            "src": "358:24:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 70,
+                              "type": "bytes32",
+                              "value": "_UserName"
+                            },
+                            "id": 85,
+                            "name": "Identifier",
+                            "src": "385:9:1"
+                          }
+                        ],
+                        "id": 86,
+                        "name": "Assignment",
+                        "src": "358:36:1"
+                      }
+                    ],
+                    "id": 87,
+                    "name": "ExpressionStatement",
+                    "src": "358:36:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "Topic",
+                              "referencedDeclaration": 65,
+                              "type": "bytes32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 80,
+                                  "type": "struct PubsubContract.Subscription memory",
+                                  "value": "newSubscription"
+                                },
+                                "id": 88,
+                                "name": "Identifier",
+                                "src": "404:15:1"
+                              }
+                            ],
+                            "id": 90,
+                            "name": "MemberAccess",
+                            "src": "404:21:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 72,
+                              "type": "bytes32",
+                              "value": "_Topic"
+                            },
+                            "id": 91,
+                            "name": "Identifier",
+                            "src": "428:6:1"
+                          }
+                        ],
+                        "id": 92,
+                        "name": "Assignment",
+                        "src": "404:30:1"
+                      }
+                    ],
+                    "id": 93,
+                    "name": "ExpressionStatement",
+                    "src": "404:30:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "bytes32"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "member_name": "MailId",
+                              "referencedDeclaration": 67,
+                              "type": "bytes32"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 80,
+                                  "type": "struct PubsubContract.Subscription memory",
+                                  "value": "newSubscription"
+                                },
+                                "id": 94,
+                                "name": "Identifier",
+                                "src": "444:15:1"
+                              }
+                            ],
+                            "id": 96,
+                            "name": "MemberAccess",
+                            "src": "444:22:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 74,
+                              "type": "bytes32",
+                              "value": "_MailId"
+                            },
+                            "id": 97,
+                            "name": "Identifier",
+                            "src": "469:7:1"
+                          }
+                        ],
+                        "id": 98,
+                        "name": "Assignment",
+                        "src": "444:32:1"
+                      }
+                    ],
+                    "id": 99,
+                    "name": "ExpressionStatement",
+                    "src": "444:32:1"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_struct$_Subscription_$68_memory_ptr",
+                                  "typeString": "struct PubsubContract.Subscription memory"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "referencedDeclaration": null,
+                              "type": "function (struct PubsubContract.Subscription storage ref) returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 61,
+                                  "type": "struct PubsubContract.Subscription storage ref[] storage ref",
+                                  "value": "subscriptions"
+                                },
+                                "id": 100,
+                                "name": "Identifier",
+                                "src": "486:13:1"
+                              }
+                            ],
+                            "id": 102,
+                            "name": "MemberAccess",
+                            "src": "486:18:1"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 80,
+                              "type": "struct PubsubContract.Subscription memory",
+                              "value": "newSubscription"
+                            },
+                            "id": 103,
+                            "name": "Identifier",
+                            "src": "505:15:1"
+                          }
+                        ],
+                        "id": 104,
+                        "name": "FunctionCall",
+                        "src": "486:35:1"
+                      }
+                    ],
+                    "id": 105,
+                    "name": "ExpressionStatement",
+                    "src": "486:35:1"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 78
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "74727565",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "bool",
+                          "type": "bool",
+                          "value": "true"
+                        },
+                        "id": 106,
+                        "name": "Literal",
+                        "src": "538:4:1"
+                      }
+                    ],
+                    "id": 107,
+                    "name": "Return",
+                    "src": "531:11:1"
+                  }
+                ],
+                "id": 108,
+                "name": "Block",
+                "src": "303:246:1"
+              }
+            ],
+            "id": 109,
+            "name": "FunctionDefinition",
+            "src": "204:345:1"
+          }
+        ],
+        "id": 110,
+        "name": "ContractDefinition",
+        "src": "26:525:1"
+      }
+    ],
+    "id": 111,
+    "name": "SourceUnit",
+    "src": "0:552:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "1510749759804": {
+      "events": {},
+      "links": {},
+      "address": "0xaa121484260fed64f1a818317d2ecce1741a2870"
+    },
+    "1510815307616": {
+      "events": {},
+      "links": {},
+      "address": "0x8d5dd268dad9f217cb9126094d19285a0504113b"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2017-11-16T06:55:11.867Z"
+}
